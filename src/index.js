@@ -27,9 +27,17 @@ Object.values(BUTTONS).forEach((button) => {
     if (button.name === 'Enter') {
       key.addEventListener('click', () => {
         const cursorPos = textArea.selectionStart;
-        textArea.value = getValueWNewChar(textArea, '\n');
+        textArea.value = getValueWNewChar(textArea, button.value);
         textArea.focus();
         textArea.setSelectionRange(cursorPos + 1, cursorPos + 1);
+      });
+    }
+    if (button.name === 'Tab') {
+      key.addEventListener('click', () => {
+        const cursorPos = textArea.selectionStart;
+        textArea.value = getValueWNewChar(textArea, button.value);
+        textArea.focus();
+        textArea.setSelectionRange(cursorPos + 4, cursorPos + 4);
       });
     }
   } else {
