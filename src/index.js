@@ -2,6 +2,7 @@ import './index.css';
 import BUTTONS from './modules/BUTTONS';
 import KEYCODES from './modules/KEYCODES';
 import getValueWNewChar from './modules/getValueWNewChar';
+import getValueWLeftDeletedChar from './modules/getValueWLeftDeletedChar';
 
 const KEYBOARD_CLASS_NAME = 'keyboard';
 const TEXTAREA_CLASS_NAME = 'textarea';
@@ -38,6 +39,14 @@ Object.values(BUTTONS).forEach((button) => {
         textArea.value = getValueWNewChar(textArea, button.value);
         textArea.focus();
         textArea.setSelectionRange(cursorPos + 4, cursorPos + 4);
+      });
+    }
+    if (button.name === 'Backspace') {
+      key.addEventListener('click', () => {
+        const cursorPos = textArea.selectionStart;
+        textArea.value = getValueWLeftDeletedChar(textArea);
+        textArea.focus();
+        textArea.setSelectionRange(cursorPos - 1, cursorPos - 1);
       });
     }
   } else {
