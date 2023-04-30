@@ -1,33 +1,53 @@
 import './index.css';
 import BUTTONS from './modules/BUTTONS';
 import KEYCODES from './modules/KEYCODES';
+import getValueWNewChar from './modules/getValueWNewChar';
+
+const KEYBOARD_CLASS_NAME = 'keyboard';
+const TEXTAREA_CLASS_NAME = 'textarea';
+const KEY_CLASS_NAME = 'keyboard__key';
+const FUNCTIONKEY_CLASS_NAME = 'keyboard__key_func';
+const ACTIVEKEY_CLASS_NAME = 'keyboard__key_active';
 
 if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en');
 
 const textArea = document.createElement('textarea');
-textArea.className = 'textarea';
+textArea.className = TEXTAREA_CLASS_NAME;
 document.body.append(textArea);
 const keyBoard = document.createElement('div');
-keyBoard.className = 'keyboard';
+keyBoard.className = KEYBOARD_CLASS_NAME;
 
 Object.values(BUTTONS).forEach((button) => {
   const key = document.createElement('div');
-  key.className = 'keyboard__key';
+  key.className = KEY_CLASS_NAME;
   if (button.isFunc) {
-    key.classList.add('keyboard__key_func');
+    key.classList.add(FUNCTIONKEY_CLASS_NAME);
     key.textContent = button.name;
     key.id = button.name;
+    if (button.name === 'Enter') {
+      key.addEventListener('click', () => {
+        const cursorPos = textArea.selectionStart;
+        textArea.value = getValueWNewChar(textArea, '\n');
+        textArea.focus();
+        textArea.setSelectionRange(cursorPos + 1, cursorPos + 1);
+      });
+    }
   } else {
     key.textContent = localStorage.getItem('lang') === 'en' ? button.value : button.valueRu;
-    key.addEventListener('click', (e) => {
-      e.target.classList.add('keyboard__key_active');
+    key.id = button.value;
+    key.addEventListener('click', () => {
       const cursorPos = textArea.selectionStart;
-      textArea.value = textArea.value.substring(0, textArea.selectionStart)
-        + key.textContent
-        + textArea.value.substring(textArea.selectionEnd, textArea.value.length);
+      textArea.value = getValueWNewChar(textArea, key.textContent);
+      textArea.focus();
       textArea.setSelectionRange(cursorPos + 1, cursorPos + 1);
     });
   }
+  key.addEventListener('mousedown', (e) => {
+    e.target.classList.add(ACTIVEKEY_CLASS_NAME);
+  });
+  key.addEventListener('mouseup', (e) => {
+    e.target.classList.remove(ACTIVEKEY_CLASS_NAME);
+  });
   keyBoard.append(key);
 });
 
