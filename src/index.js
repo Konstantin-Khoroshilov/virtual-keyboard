@@ -12,8 +12,8 @@ const KEY_CLASS_NAME = 'keyboard__key';
 const FUNCTIONKEY_CLASS_NAME = 'keyboard__key_func';
 const ACTIVEKEY_CLASS_NAME = 'keyboard__key_active';
 let capsIsOn = false;
-const shiftPressEvent = new Event('shift pressed', { bubbles: true });
-const shiftUnpressEvent = new Event('shift unpressed', { bubbles: true });
+let shiftIsPressed = false;
+const keyboardChangeEvent = new Event('keyboard change request', { bubbles: true });
 
 if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en');
 
@@ -29,7 +29,6 @@ Object.values(BUTTONS).forEach((button) => {
   if (button.isFunc) {
     key.classList.add(FUNCTIONKEY_CLASS_NAME);
     key.textContent = button.name;
-    key.id = button.name;
     if (button.name === 'Enter') {
       key.addEventListener('click', () => {
         const cursorPos = textArea.selectionStart;
@@ -64,15 +63,32 @@ Object.values(BUTTONS).forEach((button) => {
     }
     if (button.name === 'Shift') {
       key.addEventListener('mousedown', () => {
+        shiftIsPressed = true;
         const keys = Array.from(document.querySelectorAll(`.${KEY_CLASS_NAME}`));
         keys.forEach((currentKey) => {
-          currentKey.dispatchEvent(shiftPressEvent);
+          currentKey.dispatchEvent(keyboardChangeEvent);
         });
       });
       key.addEventListener('mouseup', () => {
+        shiftIsPressed = false;
         const keys = Array.from(document.querySelectorAll(`.${KEY_CLASS_NAME}`));
         keys.forEach((currentKey) => {
-          currentKey.dispatchEvent(shiftUnpressEvent);
+          currentKey.dispatchEvent(keyboardChangeEvent);
+        });
+      });
+    }
+    if (button.name === 'CapsLock') {
+      key.addEventListener('click', () => {
+        if (!capsIsOn) {
+          capsIsOn = true;
+          key.classList.add(ACTIVEKEY_CLASS_NAME);
+        } else {
+          capsIsOn = false;
+          key.classList.remove(ACTIVEKEY_CLASS_NAME);
+        }
+        const keys = Array.from(document.querySelectorAll(`.${KEY_CLASS_NAME}`));
+        keys.forEach((currentKey) => {
+          currentKey.dispatchEvent(keyboardChangeEvent);
         });
       });
     }
@@ -84,13 +100,9 @@ Object.values(BUTTONS).forEach((button) => {
       textArea.focus();
       textArea.setSelectionRange(cursorPos + 1, cursorPos + 1);
     });
-    key.addEventListener('shift pressed', () => {
+    key.addEventListener('keyboard change request', () => {
       const currentLang = localStorage.getItem('lang');
-      key.textContent = getKeyTextContent(currentLang, button, true, capsIsOn);
-    });
-    key.addEventListener('shift unpressed', () => {
-      const currentLang = localStorage.getItem('lang');
-      key.textContent = getKeyTextContent(currentLang, button, false, capsIsOn);
+      key.textContent = getKeyTextContent(currentLang, button, shiftIsPressed, capsIsOn);
     });
   }
   key.addEventListener('mousedown', (e) => {
