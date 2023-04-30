@@ -4,12 +4,16 @@ import KEYCODES from './modules/KEYCODES';
 import getValueWNewChar from './modules/getValueWNewChar';
 import getValueWLeftDeletedChar from './modules/getValueWLeftDeletedChar';
 import getValueWRightDeletedChar from './modules/getValueWRightDeletedChar';
+import getKeyTextContent from './modules/getKeyTextContent';
 
 const KEYBOARD_CLASS_NAME = 'keyboard';
 const TEXTAREA_CLASS_NAME = 'textarea';
 const KEY_CLASS_NAME = 'keyboard__key';
 const FUNCTIONKEY_CLASS_NAME = 'keyboard__key_func';
 const ACTIVEKEY_CLASS_NAME = 'keyboard__key_active';
+let capsIsOn = false;
+const shiftPressEvent = new Event('shift pressed', { bubbles: true });
+const shiftUnpressEvent = new Event('shift unpressed', { bubbles: true });
 
 if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en');
 
@@ -58,14 +62,35 @@ Object.values(BUTTONS).forEach((button) => {
         textArea.setSelectionRange(cursorPos, cursorPos);
       });
     }
+    if (button.name === 'Shift') {
+      key.addEventListener('mousedown', () => {
+        const keys = Array.from(document.querySelectorAll(`.${KEY_CLASS_NAME}`));
+        keys.forEach((currentKey) => {
+          currentKey.dispatchEvent(shiftPressEvent);
+        });
+      });
+      key.addEventListener('mouseup', () => {
+        const keys = Array.from(document.querySelectorAll(`.${KEY_CLASS_NAME}`));
+        keys.forEach((currentKey) => {
+          currentKey.dispatchEvent(shiftUnpressEvent);
+        });
+      });
+    }
   } else {
     key.textContent = localStorage.getItem('lang') === 'en' ? button.value : button.valueRu;
-    key.id = button.value;
     key.addEventListener('click', () => {
       const cursorPos = textArea.selectionStart;
       textArea.value = getValueWNewChar(textArea, key.textContent);
       textArea.focus();
       textArea.setSelectionRange(cursorPos + 1, cursorPos + 1);
+    });
+    key.addEventListener('shift pressed', () => {
+      const currentLang = localStorage.getItem('lang');
+      key.textContent = getKeyTextContent(currentLang, button, true, capsIsOn);
+    });
+    key.addEventListener('shift unpressed', () => {
+      const currentLang = localStorage.getItem('lang');
+      key.textContent = getKeyTextContent(currentLang, button, false, capsIsOn);
     });
   }
   key.addEventListener('mousedown', (e) => {

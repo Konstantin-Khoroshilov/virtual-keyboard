@@ -5,6 +5,7 @@ const BUTTONS = {
     valueRu: 'ё',
     shiftValueRu: 'Ё',
     isFunc: false,
+    hasAddChar: true,
   },
   one: {
     value: '1',
@@ -12,6 +13,7 @@ const BUTTONS = {
     valueRu: '1',
     shiftValueRu: '!',
     isFunc: false,
+    hasAddChar: true,
   },
   two: {
     value: '2',
@@ -19,6 +21,7 @@ const BUTTONS = {
     valueRu: '2',
     shiftValueRu: '"',
     isFunc: false,
+    hasAddChar: true,
   },
   three: {
     value: '3',
@@ -26,6 +29,7 @@ const BUTTONS = {
     valueRu: '3',
     shiftValueRu: '№',
     isFunc: false,
+    hasAddChar: true,
   },
   four: {
     value: '4',
@@ -33,6 +37,7 @@ const BUTTONS = {
     valueRu: '4',
     shiftValueRu: ';',
     isFunc: false,
+    hasAddChar: true,
   },
   five: {
     value: '5',
@@ -40,6 +45,7 @@ const BUTTONS = {
     valueRu: '5',
     shiftValueRu: '%',
     isFunc: false,
+    hasAddChar: true,
   },
   six: {
     value: '6',
@@ -47,6 +53,7 @@ const BUTTONS = {
     valueRu: '6',
     shiftValueRu: ':',
     isFunc: false,
+    hasAddChar: true,
   },
   seven: {
     value: '7',
@@ -54,6 +61,7 @@ const BUTTONS = {
     valueRu: '7',
     shiftValueRu: '?',
     isFunc: false,
+    hasAddChar: true,
   },
   eight: {
     value: '8',
@@ -61,6 +69,7 @@ const BUTTONS = {
     valueRu: '8',
     shiftValueRu: '*',
     isFunc: false,
+    hasAddChar: true,
   },
   nine: {
     value: '9',
@@ -68,6 +77,7 @@ const BUTTONS = {
     valueRu: '9',
     shiftValueRu: '(',
     isFunc: false,
+    hasAddChar: true,
   },
   zero: {
     value: '0',
@@ -75,6 +85,7 @@ const BUTTONS = {
     valueRu: '0',
     shiftValueRu: ')',
     isFunc: false,
+    hasAddChar: true,
   },
   dash: {
     value: '-',
@@ -82,6 +93,7 @@ const BUTTONS = {
     valueRu: '-',
     shiftValueRu: '_',
     isFunc: false,
+    hasAddChar: true,
   },
   equal: {
     value: '=',
@@ -89,6 +101,7 @@ const BUTTONS = {
     valueRu: '=',
     shiftValueRu: '+',
     isFunc: false,
+    hasAddChar: true,
   },
   bSpace: {
     name: 'Backspace',
@@ -97,6 +110,7 @@ const BUTTONS = {
     valueRu: '',
     shiftValueRu: '',
     isFunc: true,
+    hasAddChar: false,
   },
   tab: {
     name: 'Tab',
@@ -105,6 +119,7 @@ const BUTTONS = {
     valueRu: '    ',
     shiftValueRu: '    ',
     isFunc: true,
+    hasAddChar: false,
   },
   q: {
     value: 'q',
@@ -112,6 +127,7 @@ const BUTTONS = {
     valueRu: 'й',
     shiftValueRu: 'Й',
     isFunc: false,
+    hasAddChar: false,
   },
   w: {
     value: 'w',
@@ -119,6 +135,7 @@ const BUTTONS = {
     valueRu: 'ц',
     shiftValueRu: 'Ц',
     isFunc: false,
+    hasAddChar: false,
   },
   e: {
     value: 'e',
@@ -126,6 +143,7 @@ const BUTTONS = {
     valueRu: 'у',
     shiftValueRu: 'У',
     isFunc: false,
+    hasAddChar: false,
   },
   r: {
     value: 'r',
@@ -133,6 +151,7 @@ const BUTTONS = {
     valueRu: 'к',
     shiftValueRu: 'К',
     isFunc: false,
+    hasAddChar: false,
   },
   t: {
     value: 't',
@@ -140,6 +159,7 @@ const BUTTONS = {
     valueRu: 'е',
     shiftValueRu: 'Е',
     isFunc: false,
+    hasAddChar: false,
   },
   y: {
     value: 'y',
@@ -147,6 +167,7 @@ const BUTTONS = {
     valueRu: 'н',
     shiftValueRu: 'Н',
     isFunc: false,
+    hasAddChar: false,
   },
   u: {
     value: 'u',
@@ -154,6 +175,7 @@ const BUTTONS = {
     valueRu: 'г',
     shiftValueRu: 'Г',
     isFunc: false,
+    hasAddChar: false,
   },
   i: {
     value: 'i',
@@ -161,6 +183,7 @@ const BUTTONS = {
     valueRu: 'ш',
     shiftValueRu: 'Ш',
     isFunc: false,
+    hasAddChar: false,
   },
   o: {
     value: 'o',
@@ -168,6 +191,7 @@ const BUTTONS = {
     valueRu: 'щ',
     shiftValueRu: 'Щ',
     isFunc: false,
+    hasAddChar: false,
   },
   p: {
     value: 'p',
@@ -175,6 +199,7 @@ const BUTTONS = {
     valueRu: 'з',
     shiftValueRu: 'З',
     isFunc: false,
+    hasAddChar: false,
   },
   lBracket: {
     value: '[',
@@ -182,6 +207,7 @@ const BUTTONS = {
     valueRu: 'х',
     shiftValueRu: 'Х',
     isFunc: false,
+    hasAddChar: true,
   },
   rBracket: {
     value: ']',
@@ -189,6 +215,7 @@ const BUTTONS = {
     valueRu: 'ъ',
     shiftValueRu: 'Ъ',
     isFunc: false,
+    hasAddChar: true,
   },
   bSlash: {
     value: '\\',
@@ -196,6 +223,7 @@ const BUTTONS = {
     valueRu: '\\',
     shiftValueRu: '/',
     isFunc: false,
+    hasAddChar: true,
   },
   del: {
     name: 'Del',
@@ -204,6 +232,7 @@ const BUTTONS = {
     valueRu: '',
     shiftValueRu: '',
     isFunc: true,
+    hasAddChar: false,
   },
   caps: {
     name: 'CapsLock',
@@ -212,6 +241,7 @@ const BUTTONS = {
     valueRu: '',
     shiftValueRu: '',
     isFunc: true,
+    hasAddChar: false,
   },
   a: {
     value: 'a',
@@ -219,6 +249,7 @@ const BUTTONS = {
     valueRu: 'ф',
     shiftValueRu: 'Ф',
     isFunc: false,
+    hasAddChar: false,
   },
   s: {
     value: 's',
@@ -226,6 +257,7 @@ const BUTTONS = {
     valueRu: 'ы',
     shiftValueRu: 'Ы',
     isFunc: false,
+    hasAddChar: false,
   },
   d: {
     value: 'd',
@@ -233,6 +265,7 @@ const BUTTONS = {
     valueRu: 'в',
     shiftValueRu: 'В',
     isFunc: false,
+    hasAddChar: false,
   },
   f: {
     value: 'f',
@@ -240,6 +273,7 @@ const BUTTONS = {
     valueRu: 'а',
     shiftValueRu: 'А',
     isFunc: false,
+    hasAddChar: false,
   },
   g: {
     value: 'g',
@@ -247,6 +281,7 @@ const BUTTONS = {
     valueRu: 'п',
     shiftValueRu: 'П',
     isFunc: false,
+    hasAddChar: false,
   },
   h: {
     value: 'h',
@@ -254,6 +289,7 @@ const BUTTONS = {
     valueRu: 'р',
     shiftValueRu: 'Р',
     isFunc: false,
+    hasAddChar: false,
   },
   j: {
     value: 'j',
@@ -261,6 +297,7 @@ const BUTTONS = {
     valueRu: 'о',
     shiftValueRu: 'О',
     isFunc: false,
+    hasAddChar: false,
   },
   k: {
     value: 'k',
@@ -268,6 +305,7 @@ const BUTTONS = {
     valueRu: 'л',
     shiftValueRu: 'Л',
     isFunc: false,
+    hasAddChar: false,
   },
   l: {
     value: 'l',
@@ -275,6 +313,7 @@ const BUTTONS = {
     valueRu: 'д',
     shiftValueRu: 'Д',
     isFunc: false,
+    hasAddChar: false,
   },
   semicolon: {
     value: ';',
@@ -282,6 +321,7 @@ const BUTTONS = {
     valueRu: 'ж',
     shiftValueRu: 'Ж',
     isFunc: false,
+    hasAddChar: true,
   },
   qMark: {
     value: '\'',
@@ -289,6 +329,7 @@ const BUTTONS = {
     valueRu: 'э',
     shiftValueRu: 'Э',
     isFunc: false,
+    hasAddChar: true,
   },
   enter: {
     name: 'Enter',
@@ -297,6 +338,7 @@ const BUTTONS = {
     valueRu: '\n',
     shiftValueRu: '\n',
     isFunc: true,
+    hasAddChar: false,
   },
   lShift: {
     name: 'Shift',
@@ -305,6 +347,7 @@ const BUTTONS = {
     valueRu: '',
     shiftValueRu: '',
     isFunc: true,
+    hasAddChar: false,
   },
   z: {
     value: 'z',
@@ -312,6 +355,7 @@ const BUTTONS = {
     valueRu: 'я',
     shiftValueRu: 'Я',
     isFunc: false,
+    hasAddChar: false,
   },
   x: {
     value: 'x',
@@ -319,6 +363,7 @@ const BUTTONS = {
     valueRu: 'ч',
     shiftValueRu: 'Ч',
     isFunc: false,
+    hasAddChar: false,
   },
   c: {
     value: 'c',
@@ -326,6 +371,7 @@ const BUTTONS = {
     valueRu: 'с',
     shiftValueRu: 'С',
     isFunc: false,
+    hasAddChar: false,
   },
   v: {
     value: 'v',
@@ -333,6 +379,7 @@ const BUTTONS = {
     valueRu: 'м',
     shiftValueRu: 'М',
     isFunc: false,
+    hasAddChar: false,
   },
   b: {
     value: 'b',
@@ -340,6 +387,7 @@ const BUTTONS = {
     valueRu: 'и',
     shiftValueRu: 'И',
     isFunc: false,
+    hasAddChar: false,
   },
   n: {
     value: 'n',
@@ -347,6 +395,7 @@ const BUTTONS = {
     valueRu: 'т',
     shiftValueRu: 'Т',
     isFunc: false,
+    hasAddChar: false,
   },
   m: {
     value: 'm',
@@ -354,6 +403,7 @@ const BUTTONS = {
     valueRu: 'ь',
     shiftValueRu: 'Ь',
     isFunc: false,
+    hasAddChar: false,
   },
   comma: {
     value: ',',
@@ -361,6 +411,7 @@ const BUTTONS = {
     valueRu: 'б',
     shiftValueRu: 'Б',
     isFunc: false,
+    hasAddChar: true,
   },
   dot: {
     value: '.',
@@ -368,6 +419,7 @@ const BUTTONS = {
     valueRu: 'ю',
     shiftValueRu: 'Ю',
     isFunc: false,
+    hasAddChar: true,
   },
   slash: {
     value: '/',
@@ -375,6 +427,7 @@ const BUTTONS = {
     valueRu: '.',
     shiftValueRu: ',',
     isFunc: false,
+    hasAddChar: true,
   },
   tArrow: {
     value: '▲',
@@ -382,6 +435,7 @@ const BUTTONS = {
     valueRu: '▲',
     shiftValueRu: '▲',
     isFunc: false,
+    hasAddChar: false,
   },
   rShift: {
     name: 'Shift',
@@ -390,6 +444,7 @@ const BUTTONS = {
     valueRu: '',
     shiftValueRu: '',
     isFunc: true,
+    hasAddChar: false,
   },
   lCtrl: {
     name: 'Ctrl',
@@ -398,6 +453,7 @@ const BUTTONS = {
     valueRu: '',
     shiftValueRu: '',
     isFunc: true,
+    hasAddChar: false,
   },
   win: {
     name: 'Win',
@@ -406,6 +462,7 @@ const BUTTONS = {
     valueRu: '',
     shiftValueRu: '',
     isFunc: true,
+    hasAddChar: false,
   },
   lAlt: {
     name: 'Alt',
@@ -414,6 +471,7 @@ const BUTTONS = {
     valueRu: '',
     shiftValueRu: '',
     isFunc: true,
+    hasAddChar: false,
   },
   space: {
     value: ' ',
@@ -421,6 +479,7 @@ const BUTTONS = {
     valueRu: ' ',
     shiftValueRu: ' ',
     isFunc: false,
+    hasAddChar: false,
   },
   rAlt: {
     name: 'Alt',
@@ -429,6 +488,7 @@ const BUTTONS = {
     valueRu: '',
     shiftValueRu: '',
     isFunc: true,
+    hasAddChar: false,
   },
   lArrow: {
     value: '◄',
@@ -436,6 +496,7 @@ const BUTTONS = {
     valueRu: '◄',
     shiftValueRu: '◄',
     isFunc: false,
+    hasAddChar: false,
   },
   dArrow: {
     value: '▼',
@@ -443,6 +504,7 @@ const BUTTONS = {
     valueRu: '▼',
     shiftValueRu: '▼',
     isFunc: false,
+    hasAddChar: false,
   },
   rArrow: {
     value: '►',
@@ -450,6 +512,7 @@ const BUTTONS = {
     valueRu: '►',
     shiftValueRu: '►',
     isFunc: false,
+    hasAddChar: false,
   },
   rCtrl: {
     name: 'Ctrl',
@@ -458,6 +521,7 @@ const BUTTONS = {
     valueRu: '',
     shiftValueRu: '',
     isFunc: true,
+    hasAddChar: false,
   },
 };
 
