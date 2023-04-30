@@ -3,6 +3,7 @@ import BUTTONS from './modules/BUTTONS';
 import KEYCODES from './modules/KEYCODES';
 import getValueWNewChar from './modules/getValueWNewChar';
 import getValueWLeftDeletedChar from './modules/getValueWLeftDeletedChar';
+import getValueWRightDeletedChar from './modules/getValueWRightDeletedChar';
 
 const KEYBOARD_CLASS_NAME = 'keyboard';
 const TEXTAREA_CLASS_NAME = 'textarea';
@@ -47,6 +48,14 @@ Object.values(BUTTONS).forEach((button) => {
         textArea.value = getValueWLeftDeletedChar(textArea);
         textArea.focus();
         textArea.setSelectionRange(cursorPos - 1, cursorPos - 1);
+      });
+    }
+    if (button.name === 'Del') {
+      key.addEventListener('click', () => {
+        const cursorPos = textArea.selectionStart;
+        textArea.value = getValueWRightDeletedChar(textArea);
+        textArea.focus();
+        textArea.setSelectionRange(cursorPos, cursorPos);
       });
     }
   } else {
