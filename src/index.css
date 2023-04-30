@@ -1,3 +1,29 @@
 body {
-  background-color: red;
+  background-color: lightgoldenrodyellow;
+}
+
+.keyboard {
+  width: 625px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 2px double black;
+  gap: 5px;
+}
+
+.keyboard__key {
+  width: 40px;
+  height: 40px;
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard__key:hover {
+  cursor: pointer;
+}
+
+.keyboard__key_active {
+  background-color: aquamarine;
 }
