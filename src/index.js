@@ -154,7 +154,7 @@ document.body.append(keyBoard);
 
 const descriptionTexts = [
   'Клавиатура разработана для операционной системы Windows',
-  'Для смены языка используйте сочетание клавиш: левый Ctrl + левый Alt',
+  'Для смены языка используйте сочетание клавиш: Ctrl + Alt',
 ];
 for (let i = 0; i < descriptionTexts.length; i += 1) {
   const descriptionContainer = document.createElement('p');
@@ -168,6 +168,12 @@ window.addEventListener('keydown', (evt) => {
   dispatchEvent(KEY_CLASS_NAME, new CustomEvent('physKeyDown', {
     detail: { code: evt.code },
   }));
+  if (evt.altKey && evt.ctrlKey) {
+    const lang = localStorage.getItem('lang');
+    const newLang = lang === 'ru' ? 'en' : 'ru';
+    localStorage.setItem('lang', newLang);
+    dispatchEvent(KEY_CLASS_NAME, keyboardChangeEvent);
+  }
 });
 
 window.addEventListener('keyup', (evt) => {
