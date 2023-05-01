@@ -19,6 +19,9 @@ import {
   FOURTH_ROW_START,
   FOURTH_ROW_END,
   KEYBOARD_ROWS_NUMBER,
+  DESCRIPTION_CONTAINER_CLASS_NAME,
+  BODY_CLASS_NAME,
+  KEYBOARD_ROW_CLASS_NAME,
 } from './modules/CONSTANTS';
 import getValueWNewChar from './modules/getValueWNewChar';
 import getValueWLeftDeletedChar from './modules/getValueWLeftDeletedChar';
@@ -64,6 +67,8 @@ const handleCapsDown = (key, activeClassName, keyClassName, event) => {
 
 if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en');
 
+document.body.className = BODY_CLASS_NAME;
+
 const textArea = document.createElement('textarea');
 textArea.className = TEXTAREA_CLASS_NAME;
 document.body.append(textArea);
@@ -72,6 +77,7 @@ const keyBoard = document.createElement('div');
 keyBoard.className = KEYBOARD_CLASS_NAME;
 for (let i = 0; i < KEYBOARD_ROWS_NUMBER; i += 1) {
   const row = document.createElement('div');
+  row.className = KEYBOARD_ROW_CLASS_NAME;
   keyBoard.append(row);
 }
 Object.values(BUTTONS).forEach((button, buttonNumber) => {
@@ -182,7 +188,7 @@ const descriptionTexts = [
 ];
 for (let i = 0; i < descriptionTexts.length; i += 1) {
   const descriptionContainer = document.createElement('p');
-  descriptionContainer.className = 'description';
+  descriptionContainer.className = DESCRIPTION_CONTAINER_CLASS_NAME;
   descriptionContainer.textContent = descriptionTexts[i];
   document.body.append(descriptionContainer);
 }

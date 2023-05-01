@@ -1,8 +1,11 @@
-export const KEYBOARD_CLASS_NAME = 'keyboard';
+export const BODY_CLASS_NAME = 'body';
 export const TEXTAREA_CLASS_NAME = 'textarea';
+export const KEYBOARD_CLASS_NAME = 'keyboard';
+export const KEYBOARD_ROW_CLASS_NAME = 'keyboard__row';
 export const KEY_CLASS_NAME = 'keyboard__key';
 export const FUNCTIONKEY_CLASS_NAME = 'keyboard__key_func';
 export const ACTIVEKEY_CLASS_NAME = 'keyboard__key_active';
+export const DESCRIPTION_CONTAINER_CLASS_NAME = 'description';
 export const NEW_CHAR_CURSOR_SHIFT = 1;
 export const TAB_CURSOR_SHIFT = 4;
 export const BSPACE_CURSOR_SHIFT = -1;
