@@ -1,41 +1,50 @@
 function getKeyTextContent(lang, button, shiftIsPressed, capsIsOn) {
-  if (button.hasAddChar) {
-    if (lang === 'ru' && shiftIsPressed) {
-      return button.shiftValueRu;
+  if (lang === 'ru') {
+    if (!button.hasRuLetter) {
+      if (!shiftIsPressed) {
+        return button.valueRu;
+      }
+      if (shiftIsPressed) {
+        return button.shiftValueRu;
+      }
     }
-    if (lang === 'ru' && !shiftIsPressed) {
-      return button.valueRu;
+    if (button.hasRuLetter) {
+      if (shiftIsPressed && capsIsOn) {
+        return button.valueRu;
+      }
+      if (!shiftIsPressed && !capsIsOn) {
+        return button.valueRu;
+      }
+      if (shiftIsPressed && !capsIsOn) {
+        return button.shiftValueRu;
+      }
+      if (!shiftIsPressed && capsIsOn) {
+        return button.shiftValueRu;
+      }
     }
-    if (lang === 'en' && shiftIsPressed) {
-      return button.shiftValue;
+  }
+  if (lang === 'en') {
+    if (!button.hasEnLetter) {
+      if (!shiftIsPressed) {
+        return button.value;
+      }
+      if (shiftIsPressed) {
+        return button.shiftValue;
+      }
     }
-    if (lang === 'en' && !shiftIsPressed) {
-      return button.value;
-    }
-  } else {
-    if (lang === 'ru' && !shiftIsPressed && !capsIsOn) {
-      return button.valueRu;
-    }
-    if (lang === 'ru' && shiftIsPressed && !capsIsOn) {
-      return button.shiftValueRu;
-    }
-    if (lang === 'ru' && shiftIsPressed && capsIsOn) {
-      return button.valueRu;
-    }
-    if (lang === 'ru' && !shiftIsPressed && capsIsOn) {
-      return button.shiftValueRu;
-    }
-    if (lang === 'en' && !shiftIsPressed && !capsIsOn) {
-      return button.value;
-    }
-    if (lang === 'en' && shiftIsPressed && !capsIsOn) {
-      return button.shiftValue;
-    }
-    if (lang === 'en' && shiftIsPressed && capsIsOn) {
-      return button.value;
-    }
-    if (lang === 'en' && !shiftIsPressed && capsIsOn) {
-      return button.shiftValue;
+    if (button.hasEnLetter) {
+      if (shiftIsPressed && capsIsOn) {
+        return button.value;
+      }
+      if (!shiftIsPressed && !capsIsOn) {
+        return button.value;
+      }
+      if (shiftIsPressed && !capsIsOn) {
+        return button.shiftValue;
+      }
+      if (!shiftIsPressed && capsIsOn) {
+        return button.shiftValue;
+      }
     }
   }
   return null;
