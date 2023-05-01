@@ -10,14 +10,15 @@ import {
   TAB_CURSOR_SHIFT,
   BSPACE_CURSOR_SHIFT,
   DEL_CURSOR_SHIFT,
-  FIRST_STRING_START,
-  FIRST_STRING_END,
-  SECOND_STRING_START,
-  SECOND_STRING_END,
-  THIRD_STRING_START,
-  THIRD_STRING_END,
-  FOURTH_STRING_START,
-  FOURTH_STRING_END,
+  FIRST_ROW_START,
+  FIRST_ROW_END,
+  SECOND_ROW_START,
+  SECOND_ROW_END,
+  THIRD_ROW_START,
+  THIRD_ROW_END,
+  FOURTH_ROW_START,
+  FOURTH_ROW_END,
+  KEYBOARD_ROWS_NUMBER,
 } from './modules/CONSTANTS';
 import getValueWNewChar from './modules/getValueWNewChar';
 import getValueWLeftDeletedChar from './modules/getValueWLeftDeletedChar';
@@ -69,11 +70,10 @@ document.body.append(textArea);
 
 const keyBoard = document.createElement('div');
 keyBoard.className = KEYBOARD_CLASS_NAME;
-const firstKeyBoardRow = document.createElement('div');
-const secondKeyBoardRow = document.createElement('div');
-const thirdKeyBoardRow = document.createElement('div');
-const fourthKeyBoardRow = document.createElement('div');
-const fifthKeyBoardRow = document.createElement('div');
+for (let i = 0; i < KEYBOARD_ROWS_NUMBER; i += 1) {
+  const row = document.createElement('div');
+  keyBoard.append(row);
+}
 Object.values(BUTTONS).forEach((button, buttonNumber) => {
   const key = document.createElement('div');
   key.className = KEY_CLASS_NAME;
@@ -161,24 +161,18 @@ Object.values(BUTTONS).forEach((button, buttonNumber) => {
       }
     }
   });
-  if (buttonNumber >= FIRST_STRING_START && buttonNumber < FIRST_STRING_END) {
-    firstKeyBoardRow.append(key);
-  } else if (buttonNumber >= SECOND_STRING_START && buttonNumber < SECOND_STRING_END) {
-    secondKeyBoardRow.append(key);
-  } else if (buttonNumber >= THIRD_STRING_START && buttonNumber < THIRD_STRING_END) {
-    thirdKeyBoardRow.append(key);
-  } else if (buttonNumber >= FOURTH_STRING_START && buttonNumber < FOURTH_STRING_END) {
-    fourthKeyBoardRow.append(key);
+  const keyBoardRows = keyBoard.childNodes;
+  if (buttonNumber >= FIRST_ROW_START && buttonNumber < FIRST_ROW_END) {
+    keyBoardRows[0].append(key);
+  } else if (buttonNumber >= SECOND_ROW_START && buttonNumber < SECOND_ROW_END) {
+    keyBoardRows[1].append(key);
+  } else if (buttonNumber >= THIRD_ROW_START && buttonNumber < THIRD_ROW_END) {
+    keyBoardRows[2].append(key);
+  } else if (buttonNumber >= FOURTH_ROW_START && buttonNumber < FOURTH_ROW_END) {
+    keyBoardRows[3].append(key);
   } else {
-    fifthKeyBoardRow.append(key);
+    keyBoardRows[4].append(key);
   }
-  keyBoard.append(
-    firstKeyBoardRow,
-    secondKeyBoardRow,
-    thirdKeyBoardRow,
-    fourthKeyBoardRow,
-    fifthKeyBoardRow,
-  );
 });
 document.body.append(keyBoard);
 
