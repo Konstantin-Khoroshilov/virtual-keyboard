@@ -10,7 +10,6 @@ import {
   TAB_CURSOR_SHIFT,
   BSPACE_CURSOR_SHIFT,
   DEL_CURSOR_SHIFT,
-
 } from './modules/CONSTANTS';
 import getValueWNewChar from './modules/getValueWNewChar';
 import getValueWLeftDeletedChar from './modules/getValueWLeftDeletedChar';
@@ -152,6 +151,17 @@ Object.values(BUTTONS).forEach((button) => {
   keyBoard.append(key);
 });
 document.body.append(keyBoard);
+
+const descriptionTexts = [
+  'Клавиатура разработана для операционной системы Windows',
+  'Для смены языка используйте сочетание клавиш: левый Ctrl + левый Alt',
+];
+for (let i = 0; i < descriptionTexts.length; i += 1) {
+  const descriptionContainer = document.createElement('p');
+  descriptionContainer.className = 'description';
+  descriptionContainer.textContent = descriptionTexts[i];
+  document.body.append(descriptionContainer);
+}
 
 window.addEventListener('keydown', (evt) => {
   evt.preventDefault();
