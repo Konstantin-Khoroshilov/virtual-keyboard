@@ -7,6 +7,14 @@ export const NEW_CHAR_CURSOR_SHIFT = 1;
 export const TAB_CURSOR_SHIFT = 4;
 export const BSPACE_CURSOR_SHIFT = -1;
 export const DEL_CURSOR_SHIFT = 0;
+export const FIRST_STRING_START = 0;
+export const FIRST_STRING_END = 14;
+export const SECOND_STRING_START = 14;
+export const SECOND_STRING_END = 29;
+export const THIRD_STRING_START = 29;
+export const THIRD_STRING_END = 42;
+export const FOURTH_STRING_START = 42;
+export const FOURTH_STRING_END = 55;
 export const BUTTONS = {
   grave: {
     value: '`',

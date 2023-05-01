@@ -10,6 +10,14 @@ import {
   TAB_CURSOR_SHIFT,
   BSPACE_CURSOR_SHIFT,
   DEL_CURSOR_SHIFT,
+  FIRST_STRING_START,
+  FIRST_STRING_END,
+  SECOND_STRING_START,
+  SECOND_STRING_END,
+  THIRD_STRING_START,
+  THIRD_STRING_END,
+  FOURTH_STRING_START,
+  FOURTH_STRING_END,
 } from './modules/CONSTANTS';
 import getValueWNewChar from './modules/getValueWNewChar';
 import getValueWLeftDeletedChar from './modules/getValueWLeftDeletedChar';
@@ -61,7 +69,12 @@ document.body.append(textArea);
 
 const keyBoard = document.createElement('div');
 keyBoard.className = KEYBOARD_CLASS_NAME;
-Object.values(BUTTONS).forEach((button) => {
+const firstKeyBoardRow = document.createElement('div');
+const secondKeyBoardRow = document.createElement('div');
+const thirdKeyBoardRow = document.createElement('div');
+const fourthKeyBoardRow = document.createElement('div');
+const fifthKeyBoardRow = document.createElement('div');
+Object.values(BUTTONS).forEach((button, buttonNumber) => {
   const key = document.createElement('div');
   key.className = KEY_CLASS_NAME;
   if (button.isFunc) {
@@ -148,13 +161,30 @@ Object.values(BUTTONS).forEach((button) => {
       }
     }
   });
-  keyBoard.append(key);
+  if (buttonNumber >= FIRST_STRING_START && buttonNumber < FIRST_STRING_END) {
+    firstKeyBoardRow.append(key);
+  } else if (buttonNumber >= SECOND_STRING_START && buttonNumber < SECOND_STRING_END) {
+    secondKeyBoardRow.append(key);
+  } else if (buttonNumber >= THIRD_STRING_START && buttonNumber < THIRD_STRING_END) {
+    thirdKeyBoardRow.append(key);
+  } else if (buttonNumber >= FOURTH_STRING_START && buttonNumber < FOURTH_STRING_END) {
+    fourthKeyBoardRow.append(key);
+  } else {
+    fifthKeyBoardRow.append(key);
+  }
+  keyBoard.append(
+    firstKeyBoardRow,
+    secondKeyBoardRow,
+    thirdKeyBoardRow,
+    fourthKeyBoardRow,
+    fifthKeyBoardRow,
+  );
 });
 document.body.append(keyBoard);
 
 const descriptionTexts = [
   'Клавиатура разработана для операционной системы Windows',
-  'Для смены языка используйте сочетание клавиш: Ctrl + Alt',
+  'Для смены языка используйте сочетание клавиш: левые Ctrl + Alt',
 ];
 for (let i = 0; i < descriptionTexts.length; i += 1) {
   const descriptionContainer = document.createElement('p');
