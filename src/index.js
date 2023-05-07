@@ -34,17 +34,17 @@ let capsIsOn = false;
 let shiftIsPressed = false;
 const keyboardChangeEvent = new Event('keyboard change request', { bubbles: true });
 
-const handleKeyDown = (textAreaClassName, textArea, value) => {
-  modifyTextArea(textAreaClassName, getValueWNewChar, [textArea, value], NEW_CHAR_CURSOR_SHIFT);
+const handleKeyDown = (textAreaClassName, newChar) => {
+  modifyTextArea(textAreaClassName, NEW_CHAR_CURSOR_SHIFT, getValueWNewChar, [newChar]);
 };
-const handleTab = (textAreaClassName, textArea, value) => {
-  modifyTextArea(textAreaClassName, getValueWNewChar, [textArea, value], TAB_CURSOR_SHIFT);
+const handleTab = (textAreaClassName, newChar) => {
+  modifyTextArea(textAreaClassName, TAB_CURSOR_SHIFT, getValueWNewChar, [newChar]);
 };
-const handleBSpace = (textAreaClassName, textArea) => {
-  modifyTextArea(textAreaClassName, getValueWLeftDeletedChar, [textArea], BSPACE_CURSOR_SHIFT);
+const handleBSpace = (textAreaClassName) => {
+  modifyTextArea(textAreaClassName, BSPACE_CURSOR_SHIFT, getValueWLeftDeletedChar);
 };
-const handleDel = (textAreaClassName, textArea) => {
-  modifyTextArea(textAreaClassName, getValueWRightDeletedChar, [textArea], DEL_CURSOR_SHIFT);
+const handleDel = (textAreaClassName) => {
+  modifyTextArea(textAreaClassName, DEL_CURSOR_SHIFT, getValueWRightDeletedChar);
 };
 const handleShiftDown = (keyClassName, event) => {
   shiftIsPressed = true;
@@ -88,22 +88,22 @@ Object.values(BUTTONS).forEach((button, buttonNumber) => {
     key.textContent = button.name;
     if (button.name === 'Enter') {
       key.addEventListener('click', () => {
-        handleKeyDown(TEXTAREA_CLASS_NAME, textArea, button.value);
+        handleKeyDown(textArea.className, button.value);
       });
     }
     if (button.name === 'Tab') {
       key.addEventListener('click', () => {
-        handleTab(TEXTAREA_CLASS_NAME, textArea, button.value);
+        handleTab(textArea.className, button.value);
       });
     }
     if (button.name === 'Backspace') {
       key.addEventListener('click', () => {
-        handleBSpace(TEXTAREA_CLASS_NAME, textArea);
+        handleBSpace(textArea.className);
       });
     }
     if (button.name === 'Del') {
       key.addEventListener('click', () => {
-        handleDel(TEXTAREA_CLASS_NAME, textArea);
+        handleDel(textArea.className);
       });
     }
     if (button.name === 'Shift') {
@@ -122,7 +122,7 @@ Object.values(BUTTONS).forEach((button, buttonNumber) => {
   } else {
     key.textContent = localStorage.getItem('lang') === 'en' ? button.value : button.valueRu;
     key.addEventListener('click', () => {
-      handleKeyDown(TEXTAREA_CLASS_NAME, textArea, key.textContent);
+      handleKeyDown(textArea.className, key.textContent);
     });
     key.addEventListener('keyboard change request', () => {
       const currentLang = localStorage.getItem('lang');
@@ -141,19 +141,19 @@ Object.values(BUTTONS).forEach((button, buttonNumber) => {
         key.classList.add(ACTIVEKEY_CLASS_NAME);
       }
       if (button.name === 'Enter') {
-        handleKeyDown(TEXTAREA_CLASS_NAME, textArea, button.value);
+        handleKeyDown(textArea.className, button.value);
       } else if (button.name === 'Tab') {
-        handleTab(TEXTAREA_CLASS_NAME, textArea, button.value);
+        handleTab(textArea.className, button.value);
       } else if (button.name === 'Backspace') {
-        handleBSpace(TEXTAREA_CLASS_NAME, textArea);
+        handleBSpace(textArea.className);
       } else if (button.name === 'Del') {
-        handleDel(TEXTAREA_CLASS_NAME, textArea);
+        handleDel(textArea.className);
       } else if (button.name === 'Shift') {
         handleShiftDown(KEY_CLASS_NAME, keyboardChangeEvent);
       } else if (button.name === 'CapsLock') {
         handleCapsDown(key, ACTIVEKEY_CLASS_NAME, KEY_CLASS_NAME, keyboardChangeEvent);
       } else if (!button.isFunc) {
-        handleKeyDown(TEXTAREA_CLASS_NAME, textArea, key.textContent);
+        handleKeyDown(textArea.className, key.textContent);
       }
     }
   });

@@ -1,7 +1,7 @@
-function modifyTextArea(textAreaClassName, modifier, modifierArgs, cursorShift) {
+function modifyTextArea(textAreaClassName, cursorShift, modifier, modifierArgs = []) {
   const textArea = document.querySelector(`.${textAreaClassName}`);
   const cursorPos = textArea.selectionStart;
-  textArea.value = modifier(...modifierArgs);
+  textArea.value = modifier(textArea, ...modifierArgs);
   textArea.focus();
   textArea.setSelectionRange(cursorPos + cursorShift, cursorPos + cursorShift);
 }
